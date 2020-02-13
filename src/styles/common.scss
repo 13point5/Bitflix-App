@@ -1,0 +1,7 @@
+@import "./variables.scss";
+
+.bottom-shadow {
+    -webkit-box-shadow: 0 1px 10px map-get($colors, "grey-1");
+    -moz-box-shadow: 0 1px 10px map-get($colors, "grey-1");
+    box-shadow: 0 1px 10px map-get($colors, "grey-1");
+}

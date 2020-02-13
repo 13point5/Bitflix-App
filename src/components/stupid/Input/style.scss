@@ -1,0 +1,32 @@
+.input-field {
+    background-color: #f2f7f7;
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    transition: all 0.3s ease;
+}
+
+.input-field:focus-within {
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1), inset 0 -2px 0 #333;
+}
+
+.input-field i {
+    color: #738f93;
+    width: 2rem;
+    font-size: 1.5rem;
+}
+
+.input-field:focus-within i {
+    color: #363f41;
+}
+
+.input-field input {
+    height: 100%;
+    flex: 1;
+    margin-left: 0.5rem;
+    background-color: #f2f7f7;
+    font-size: 1.125em;
+}

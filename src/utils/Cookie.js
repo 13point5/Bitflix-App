@@ -1,7 +1,15 @@
 const Cookie = {
-    get: key => {
+    is: key => {
         const values = document.cookie.indexOf(key);
         return values !== -1;
+    },
+
+    get: key => {
+        let parts = document.cookie.split("; ");
+        let res = parts.filter(part => part.indexOf(key) !== -1);
+        res = res[0];
+        res = res.split("=");
+        return res[1];
     },
 
     set: (key, val) => {

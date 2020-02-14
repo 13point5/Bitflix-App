@@ -8,7 +8,7 @@ const AuthRoute = ({ component: Comp, path, redirect, ...rest }) => {
             path={path}
             {...rest}
             render={props => {
-                return Cookie.get("Bitflix") ? (
+                return Cookie.is("Bitflix") ? (
                     <Comp {...props} />
                 ) : (
                     <Redirect to={redirect} />

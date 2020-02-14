@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import "./style.scss";
 import Input from "../../stupid/Input";
+import { signUp, signIn } from "../../../axios/User";
+import Cookie from "../../../utils/Cookie";
+import { withRouter } from "react-router-dom";
 
 class AuthForm extends Component {
     state = {
@@ -68,6 +71,31 @@ class AuthForm extends Component {
         }
     };
 
+    authHandler = authType => {
+        let res;
+        const alertMessages = {
+            signUp: "Could not Sign up",
+            signIn: "Could not Sign in"
+        };
+
+        if (authType === "signUp") {
+            res = signUp(this.state.signUp);
+        } else {
+            res = signIn(this.state.signIn);
+        }
+
+        res.then(data => {
+            if (!data.token) {
+                return alert(alertMessages[authType]);
+            }
+            Cookie.set("Bitflix", data.token);
+            this.props.history.push("/home");
+        }).catch(err => {
+            console.log(err);
+            alert("Something went wrong");
+        });
+    };
+
     render() {
         return (
             <div className="auth-box">
@@ -108,7 +136,12 @@ class AuthForm extends Component {
                                     value={this.state.signIn.password}
                                 />
                                 <div className="auth-bottom">
-                                    <button>Log in</button>
+                                    <button
+                                        onClick={() =>
+                                            this.authHandler("signIn")
+                                        }>
+                                        Log in
+                                    </button>
                                 </div>
                             </div>
                         ) : (
@@ -140,7 +173,12 @@ class AuthForm extends Component {
                                     value={this.state.signUp.password}
                                 />
                                 <div className="auth-bottom">
-                                    <button>Create An Account</button>
+                                    <button
+                                        onClick={() =>
+                                            this.authHandler("signUp")
+                                        }>
+                                        Create An Account
+                                    </button>
                                 </div>
                             </div>
                         )}
@@ -151,4 +189,4 @@ class AuthForm extends Component {
     }
 }
 
-export default AuthForm;
+export default withRouter(AuthForm);

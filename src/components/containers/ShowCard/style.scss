@@ -1,0 +1,110 @@
+@import "../../../styles/variables.scss";
+
+.show-card {
+    // cursor: pointer;
+    width: 23rem;
+    border: 1px solid map-get($colors, "grey-1");
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.show-header {
+    padding: 1rem;
+    background-color: map-get($colors, "inverse");
+    color: map-get($colors, "white");
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.show-body {
+    padding: 0.5rem 1rem;
+}
+
+.show-body-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0.55rem 0;
+    box-sizing: border-box;
+}
+
+.show-body-item h5 {
+    flex: 2;
+    // background-color: red;
+}
+
+.show-body-item input {
+    font-size: 1.125rem;
+    flex: 0.5;
+    text-align: end;
+    // background-color: blue;
+    width: 100%;
+}
+
+.editable-true {
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    border: 1px solid rgba(81, 203, 238, 1);
+}
+
+.show-header h4 {
+    width: 55%;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    // background-color: blue;
+    text-overflow: ellipsis;
+}
+
+.show-menu-items {
+    // background-color: red;
+    width: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.show-menu-items i {
+    cursor: pointer;
+}
+
+.show-btn {
+    flex: 1;
+    height: 2rem;
+    color: white;
+    border-radius: 0.2rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.show-btn-left {
+    margin-right: 0.5rem;
+}
+
+.show-btn-left.confirm {
+    background: #25b945;
+    box-shadow: 0 2px 4px 0#6ad381;
+}
+
+.show-btn-left.confirm:hover {
+    background: #157229;
+}
+
+.show-btn-left.delete {
+    background: #dd3722;
+    box-shadow: 0 2px 4px 0#e07b6e;
+}
+
+.show-btn-left.delete:hover {
+    background: #a12c1d;
+}
+
+.show-btn-right {
+    background: #0275d8;
+    box-shadow: 0 2px 4px 0#5fa2ff;
+    margin-left: 0.5rem;
+}
+
+.show-btn-right:hover {
+    background: #0049a6;
+}

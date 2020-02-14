@@ -5,12 +5,15 @@ const Input = props => {
     const iconClasses = {
         name: "fas fa-user",
         email: "fas fa-envelope",
-        password: "fas fa-lock"
+        password: "fas fa-lock",
+        number: null
     };
 
     return (
         <div className="input-field">
-            <i className={iconClasses[props.type]}></i>
+            {iconClasses[props.type] ? (
+                <i className={iconClasses[props.type]}></i>
+            ) : null}
             <input
                 placeholder={props.placeholder}
                 type={props.type}

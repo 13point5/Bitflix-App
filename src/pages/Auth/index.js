@@ -12,7 +12,8 @@ class AuthPage extends Component {
 
     render() {
         return (
-            <div className="auth-page flex-center">
+            <div className="auth-page">
+                <h3>BITFLIX</h3>
                 <AuthForm />
             </div>
         );

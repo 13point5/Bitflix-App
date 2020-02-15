@@ -11,9 +11,6 @@ const AppBar = props => {
                         <button onClick={props.newShow}>New Show</button>
                     </li>
                     <li>
-                        <button>Profile</button>
-                    </li>
-                    <li>
                         <button onClick={props.logOut}>Sign Out</button>
                     </li>
                 </ul>

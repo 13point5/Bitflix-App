@@ -21,7 +21,6 @@ class ShowCard extends Component {
 
     handleInputChange = event => {
         let { name, value } = event.target;
-        console.log(name);
         this.setState({ [name]: value });
     };
 
@@ -38,18 +37,19 @@ class ShowCard extends Component {
     };
 
     updateShow = () => {
-        console.log(this.state.action);
         if (this.state.action === "delete") {
-            console.log("slavdlunj");
-            return this.props.delete();
+            this.props.delete();
+            this.cancelAction();
+            return;
         }
+
         let res = patchSingleShow(this.state.id, {
             season: this.state.season,
             episode: this.state.episode
         });
 
         res.then(data => {
-            if (data.title) {
+            if (data && data.title) {
                 this.cancelAction();
             }
         }).catch(err => {
@@ -78,7 +78,6 @@ class ShowCard extends Component {
                         <input
                             className={`editable-${this.state.editable}`}
                             type="number"
-                            pattern="[0-9]*"
                             name="season"
                             onChange={this.handleInputChange}
                             value={this.state.season}
@@ -90,7 +89,6 @@ class ShowCard extends Component {
                         <input
                             className={`editable-${this.state.editable}`}
                             type="number"
-                            pattern="[0-9]*"
                             name="episode"
                             onChange={this.handleInputChange}
                             value={this.state.episode}

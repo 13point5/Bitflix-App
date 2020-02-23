@@ -55,7 +55,7 @@ class Home extends Component {
     getUserDetails = () => {
         let res = getUser();
         res.then(data => {
-            if (data.name) {
+            if (data && data.name) {
                 this.setState({ name: data.name });
             }
         }).catch(err => {
@@ -63,17 +63,14 @@ class Home extends Component {
         });
     };
 
-    newShowPopup = () => {
-        this.setState({ isNew: true });
-    };
-
     addShow = () => {
-        let showData = { ...this.state.newShow };
-        let res = addSingleShow(showData);
+        let res = addSingleShow(this.state.newShow);
         res.then(data => {
-            console.log(data);
-            const shows = this.state.shows.concat(data);
-            this.setState({ shows });
+            this.setState(prevState => {
+                return {
+                    shows: prevState.shows.concat(data)
+                };
+            });
         }).catch(err => {
             console.error(err);
             alert("Something went wrong!");
@@ -84,6 +81,7 @@ class Home extends Component {
     getShows = () => {
         let res = getAllShows();
         res.then(data => {
+            console.log(data);
             this.setState({ shows: data });
         }).catch(err => {
             console.error(err);
@@ -114,7 +112,7 @@ class Home extends Component {
     render() {
         let showCards = null;
 
-        if (this.state.shows.length > 0) {
+        if (this.state.shows && this.state.shows.length > 0) {
             showCards = this.state.shows.map((show, idx) => {
                 return (
                     <ShowCard
@@ -131,7 +129,7 @@ class Home extends Component {
 
         return (
             <Fragment>
-                <AppBar logOut={this.logOutUser} newShow={this.newShowPopup} />
+                <AppBar logOut={this.logOutUser} newShow={this.showModal} />
                 <div className="home-page">
                     <div className="home-header">
                         <h4 className="home-header-title">My Shows</h4>

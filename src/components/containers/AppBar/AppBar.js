@@ -19,4 +19,4 @@ const AppBar = props => {
     );
 };
 
-export default AppBar;
+export default React.memo(AppBar);
